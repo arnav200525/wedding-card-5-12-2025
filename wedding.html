@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Ceremony</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wedding-page-modern">
+        
+        
+        <!-- Image Slider Section -->
+        <div class="wedding-slider">
+            <div class="slider-container">
+                <!-- REPLACE: Add your own couple images below (3 images) -->
+                <div class="slide active">
+                    <img src="static/wedding-1.jpg" alt="Wedding Photo 1">
+                </div>
+                <div class="slide">
+                    <img src="static/wedding-2.jpg" alt="Wedding Photo 2">
+                </div>
+                <div class="slide">
+                    <img src="static/wedding-3.jpg" alt="Wedding Photo 2">
+                </div>
+            </div>
+
+            
+            <!-- Slider Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+            
+            <!-- Overlay Content -->
+            <div class="slider-overlay">
+                <div class="overlay-content">
+                    
+                    <h1 class="wedding-title">Wedding Ceremony</h1>
+                    <div class="wedding-decorative-line"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wedding Details Section -->
+        <div class="wedding-details-modern">
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="card-icon">📅</div>
+                    <h3 class="card-label">Date</h3>
+                    <!-- DATE IS FIXED: 5th December -->
+                    <p class="card-value">5th December 2025</p>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="card-icon">🕐</div>
+                    <h3 class="card-label">Time</h3>
+                    <!-- REPLACE: Change time below -->
+                    <p class="card-value">12.50 PM</p>
+                </div>
+                
+                <div class="detail-card full-width">
+                    <div class="card-icon">📍</div>
+                    <h3 class="card-label">Venue</h3>
+                    <!-- REPLACE: Change venue address below -->
+                    <p class="card-value">
+                        Baba's Mangalashtak<br>
+                        Kandhane Road,<br>
+                        Satana 423301
+                        <a href="https://www.google.com/maps?s=web&rlz=1C1RXQR_enIN1137IN1137&lqi=ChNiYWJhJ3MgbGF3bnMgc2F0YW5hSMX3t7X7uoCACFofEAAQARACGAAYAiITYmFiYSdzIGxhd25zIHNhdGFuYZIBDGJhbnF1ZXRfaGFsbJoBJENoZERTVWhOTUc5blMwVkpRMEZuVFVOWk5VMDNWV3QzUlJBQqoBThABKhAiDGJhYmEncyBsYXducygAMh8QASIbJKZ774igrSvLFzi-uCfhWpZkYoYi3TYL3pQMMhcQAiITYmFiYSdzIGxhd25zIHNhdGFuYfoBBAgAECU&phdesc=keXuXPBZtoY&vet=12ahUKEwiksoSroICRAxVVxzgGHflvPdYQ1YkKegQIGhAB..i&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KbUWqD15Y947MdmeZKzSf5zy&daddr=near+by+kandhana,+Satana,+Morenagar,+Maharashtra+423301">📍Location</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="wedding-message-modern">
+                <div class="message-icon">✨</div>
+                <!-- REPLACE: Change message text below -->
+                <p>We request the honor of your presence as we exchange vows and begin our forever together. Your blessings and love mean the world to us on this momentous day.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let slideIndex = 1;
+        let slideTimer;
+        
+        // Initialize slider
+        showSlides(slideIndex);
+        startAutoSlide();
+        
+        function changeSlide(n) {
+            clearTimeout(slideTimer);
+            showSlides(slideIndex += n);
+            startAutoSlide();
+        }
+        
+        function currentSlide(n) {
+            clearTimeout(slideTimer);
+            showSlides(slideIndex = n);
+            startAutoSlide();
+        }
+        
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+        
+        function startAutoSlide() {
+            slideTimer = setTimeout(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+                startAutoSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
+    </script>
+</body>
+</html>
